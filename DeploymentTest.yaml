@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-demo
+  namespace: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-rdi
+  template:
+    metadata:
+      labels:
+        app: test-rdi
+    spec:
+      containers:
+      - name: docker-demo
+        image: sirfragalot/docker-demo:dcus 
+        ports:
+        - containerPort: 8080
